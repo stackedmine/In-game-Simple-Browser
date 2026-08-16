@@ -9,7 +9,8 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Unzip project
-        run: unzip -o *.zip
+        run: |
+          unzip -o mod-browser.zip -d .
 
       - name: Set up JDK 25
         uses: actions/setup-java@v4
