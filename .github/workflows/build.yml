@@ -10,7 +10,9 @@ jobs:
 
       - name: Unzip project
         run: |
-          unzip -o mod-browser.zip -d .
+          unzip -o mod-browser.zip -d temp_unzip
+          cp -r temp_unzip/*/* . 2>/dev/null || cp -r temp_unzip/* . 2>/dev/null || true
+          rm -rf temp_unzip
 
       - name: Set up JDK 25
         uses: actions/setup-java@v4
