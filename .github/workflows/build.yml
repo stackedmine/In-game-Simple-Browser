@@ -11,7 +11,9 @@ jobs:
       - name: Unzip project
         run: |
           unzip -o mod-browser.zip -d temp_unzip
-          cp -r temp_unzip/*/* . 2>/dev/null || cp -r temp_unzip/* . 2>/dev/null || true
+          # Находим папку, где лежит gradlew, и переносим всё оттуда в корень
+          GRADLE_DIR=$(dirname $(find temp_unzip -name "gradlew" | head -n 1))
+          cp -r $GRADLE_DIR/* .
           rm -rf temp_unzip
 
       - name: Set up JDK 25
